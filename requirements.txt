@@ -1,0 +1,15 @@
+# Core CV / numerics
+opencv-python>=4.8.0
+numpy>=1.24.0
+
+# Progress bars (used in notebooks)
+tqdm>=4.65.0
+
+# Notebook exploration
+jupyter>=1.0.0
+matplotlib>=3.7.0
+
+# Optional: MobileSAM bootstrap (install separately if needed)
+# git+https://github.com/ChaoningZhang/MobileSAM.git
+# torch>=2.0.0
+# torchvision>=0.15.0
