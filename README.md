@@ -32,6 +32,28 @@ to achieve stable and explainable detections at high throughput.
 - Debug overlay generation
 - Unit-tested modular architecture
 
+## Pipeline Architecture
+
+Input Video
+    ↓
+Frame Sampling
+    ↓
+Bilateral Filtering
+    ↓
+HSV Red Segmentation
+    ↓
+Morphological Cleanup
+    ↓
+Contour Extraction
+    ↓
+Spatial Clustering
+    ↓
+Rotated Quad Fitting
+    ↓
+Temporal Tracking
+    ↓
+Binary Mask Rendering
+
 ## Performance Benchmarks
 
 Tested on:
