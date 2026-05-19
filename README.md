@@ -88,3 +88,71 @@ While neural segmentation models may improve robustness in rare edge cases, the 
 - easier tuning
 - stronger interpretability
 - lower operational cost
+
+## Current Limitations
+
+- HSV thresholds may require retuning for dramatically different lighting environments.
+- Perspective distortion handling relies on minAreaRect rather than full homography reconstruction.
+- The tracker currently uses EMA smoothing rather than predictive motion modeling.
+- Extreme occlusions may temporarily destabilize quadrilateral fitting.
+
+## Potential Future Improvements
+
+- Adaptive HSV threshold refinement
+- Perspective-aware homography stabilization
+- Kalman-filter-based motion prediction
+- Multi-camera synchronization
+- Edge-aware contour reconstruction
+- Lightweight learned pixel classifier for cross-site robustness
+- Dynamic kernel sizing based on distance estimation
+
+## Design Philosophy
+
+The pipeline was designed around a core principle:
+
+> Prefer lightweight, explainable, and deterministic computer vision systems when the visual problem is sufficiently constrained.
+
+Forklift safety lasers are:
+- highly saturated
+- geometrically structured
+- visually distinct
+
+making them well-suited for a hybrid classical CV approach rather than large neural segmentation models.
+
+## Why No Deep Learning?
+
+Deep learning segmentation models (e.g. SAM, YOLO segmentation, Mask R-CNN) were intentionally not used as the primary solution because:
+
+- the dataset size is extremely limited
+- inference latency is significantly higher
+- deployment complexity increases
+- interpretability decreases
+- deterministic debugging becomes harder
+
+The current classical CV pipeline already achieves:
+- real-time throughput
+- stable masks
+- strong explainability
+- low compute requirements
+
+which aligns well with industrial edge deployment requirements.
+
+## Technical Highlights
+
+- 70+ FPS throughput on CPU-only inference
+- Perspective-robust quadrilateral fitting
+- Temporal FSM-based false-positive suppression
+- Union-find contour clustering
+- Modular testable architecture
+- Interactive HSV tuning tool
+- Auto-calibration pipeline
+- Synthetic unit-test framework
+
+## Test Environment
+
+- CPU: Intel i5 10th Gen
+- RAM: 8 GB DDR4
+- GPU: RTX 1650 Ti (unused)
+- OS: Windows 10
+- Python: 3.x
+
