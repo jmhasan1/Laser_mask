@@ -34,6 +34,7 @@ to achieve stable and explainable detections at high throughput.
 
 ## Pipeline Architecture
 
+```text
 Input Video
     ↓
 Frame Sampling
