@@ -54,6 +54,7 @@ Rotated Quad Fitting
 Temporal Tracking
     ↓
 Binary Mask Rendering
+```
 
 ## Performance Benchmarks
 
