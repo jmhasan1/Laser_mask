@@ -38,9 +38,9 @@ Thumbs.db
 # =========================
 # Output Videos & Results
 # =========================
-data/outputs/
-outputs/
-results/
+# data/outputs/
+# outputs/
+# results/
 
 # =========================
 # Large Video Files
