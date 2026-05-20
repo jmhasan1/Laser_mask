@@ -56,23 +56,88 @@ Temporal Tracking
 Binary Mask Rendering
 ```
 
-## Performance Benchmarks
+# Performance Benchmarks
 
-Tested on:
+Test Environment:
 - Intel i5 10th Gen CPU
+- 8 GB DDR4 RAM
 - CPU-only inference
+- Windows 10
+- Python 3.x
 - 1248×720 warehouse footage
 
-| Video | Resolution | Frames | Throughput |
-|---|---|---|---|
-| clip1.mp4 | 1248×720 | 63 | 51.4 FPS |
-| clip1 (2).mp4 | 1248×720 | 63 | 37.0 FPS |
-| clip1 (3).mp4 | 1248×720 | 63 | 39.6 FPS |
-| clip2.mp4 | 1248×720 | 62 | 72.9 FPS |
-| clip2 (2).mp4 | 1248×720 | 62 | 60.0 FPS |
-| clip2 (3).mp4 | 1248×720 | 62 | 58.6 FPS |
+---
 
-All significantly exceed the 2 FPS minimum requirement specified in the challenge.
+## Standard Full-Resolution Processing (`--scale 1.0`)
+
+The baseline pipeline was evaluated on 30 warehouse video clips at full 1248×720 resolution.
+
+| Metric | Result |
+|---|---|
+| Lowest Throughput | 20.2 FPS |
+| Highest Throughput | 41.1 FPS |
+| Typical Range | 28–37 FPS |
+| Resolution | 1248×720 |
+| Processing Mode | CPU-only |
+
+Representative Results:
+
+| Video | Throughput |
+|---|---|
+| clip3.mp4 | 41.1 FPS |
+| clip7 (2).mp4 | 38.2 FPS |
+| clip5.mp4 | 36.3 FPS |
+| clip10 (3).mp4 | 23.7 FPS |
+| clip9 (2).mp4 | 20.2 FPS |
+
+All benchmark runs significantly exceeded the 2 FPS minimum requirement specified in the technical challenge.
+
+---
+
+## Debug Visualization Mode (`--debug`)
+
+The pipeline also supports an optional debug visualization mode for:
+- contour inspection
+- tracker analysis
+- pipeline tuning
+- deployment debugging
+
+This mode overlays:
+- HSV detections
+- fitted quadrilaterals
+- active tracks
+- FPS statistics
+- polygon boundaries
+
+| Metric | Result |
+|---|---|
+| Lowest Throughput | 14.3 FPS |
+| Highest Throughput | 32.3 FPS |
+| Typical Range | 22–31 FPS |
+| Additional Output | Debug overlay videos |
+
+Representative Results:
+
+| Video | Throughput |
+|---|---|
+| clip2.mp4 | 32.3 FPS |
+| clip4 (2).mp4 | 32.1 FPS |
+| clip7 (3).mp4 | 32.3 FPS |
+| clip1 (2).mp4 | 14.3 FPS |
+| clip8.mp4 | 14.8 FPS |
+
+Even with visualization overhead, the system maintained real-time performance.
+
+---
+
+## Automatic HSV Calibration (`--auto-calibrate`)
+
+The system includes an automatic calibration stage that dynamically refines HSV thresholds using early seed frames.
+
+Calibration example:
+
+```text
+[auto_calibrate] Refined HSV: S∈[165,165]  V≥243
 
 ## Observed Failure Cases
 
