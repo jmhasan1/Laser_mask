@@ -138,7 +138,7 @@ Calibration example:
 
 ```text
 [auto_calibrate] Refined HSV: S∈[165,165]  V≥243
-
+```
 ## Observed Failure Cases
 
 The current pipeline performs robustly under most warehouse conditions, but several challenging edge cases remain:
