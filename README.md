@@ -18,6 +18,7 @@ The pipeline avoids heavy deep learning models and instead combines:
 
 to achieve stable and explainable detections at high throughput.
 
+I have also added an audio explanation of the project in pocast form developed using Notebook LLM for detailed understanding.
 ## Core Features
 
 - Real-time CPU-only processing
