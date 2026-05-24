@@ -45,9 +45,9 @@ Thumbs.db
 # =========================
 # Large Video Files
 # =========================
-*.mp4
-*.avi
-*.mov
+# *.mp4
+# *.avi
+# *.mov
 
 # Keep sample structure
 !data/raw/.gitkeep
